@@ -33,56 +33,56 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author raver119@gmail.com
  */
-@Slf4j
-@RunWith(Parameterized.class)
-public class CloseableTests extends BaseNd4jTest {
-    public CloseableTests(Nd4jBackend backend) {
-        super(backend);
-    }
-
-    @Test
-    public void testSimpleRelease_1() {
-        val array = Nd4j.createFromArray(new float[]{1, 2, 3, 4, 5});
-        assertTrue(array.closeable());
-
-        array.close();
-
-        assertFalse(array.closeable());
-    }
-
-    @Test
-    public void testCyclicRelease_1() {
-        for (int e = 0; e < 1000; e++) {
-            try (val array = Nd4j.createFromArray(new float[]{1, 2, 3, 4, 5})) {
-                array.addi(1.0f);
-            }
-            System.gc();
-        }
-    }
-
-    @Test
-    public void testViewRelease_1() {
-        val array = Nd4j.create(5, 5);
-        assertTrue(array.closeable());
-
-        val view = array.get(NDArrayIndex.point(1), NDArrayIndex.all());
-
-        assertTrue(array.closeable());
-        assertFalse(view.closeable());
-    }
-
-    @Test
-    public void testAttachedRelease_1() {
-        val wsconf = WorkspaceConfiguration.builder().build();
-
-        try (val ws = Nd4j.getWorkspaceManager().getAndActivateWorkspace(wsconf, "haha72yjhfdfs")) {
-            val array = Nd4j.create(5, 5);
-            assertFalse(array.closeable());
-        }
-    }
-
-    @Override
-    public char ordering() {
-        return 'c';
-    }
-}
+//@Slf4j
+//@RunWith(Parameterized.class)
+//public class CloseableTests extends BaseNd4jTest {
+//    public CloseableTests(Nd4jBackend backend) {
+//        super(backend);
+//    }
+//
+//    @Test
+//    public void testSimpleRelease_1() {
+//        val array = Nd4j.createFromArray(new float[]{1, 2, 3, 4, 5});
+//        assertTrue(array.closeable());
+//
+//        array.close();
+//
+//        assertFalse(array.closeable());
+//    }
+//
+//    @Test
+//    public void testCyclicRelease_1() {
+//        for (int e = 0; e < 1000; e++) {
+//            try (val array = Nd4j.createFromArray(new float[]{1, 2, 3, 4, 5})) {
+//                array.addi(1.0f);
+//            }
+//            System.gc();
+//        }
+//    }
+//
+//    @Test
+//    public void testViewRelease_1() {
+//        val array = Nd4j.create(5, 5);
+//        assertTrue(array.closeable());
+//
+//        val view = array.get(NDArrayIndex.point(1), NDArrayIndex.all());
+//
+//        assertTrue(array.closeable());
+//        assertFalse(view.closeable());
+//    }
+//
+//    @Test
+//    public void testAttachedRelease_1() {
+//        val wsconf = WorkspaceConfiguration.builder().build();
+//
+//        try (val ws = Nd4j.getWorkspaceManager().getAndActivateWorkspace(wsconf, "haha72yjhfdfs")) {
+//            val array = Nd4j.create(5, 5);
+//            assertFalse(array.closeable());
+//        }
+//    }
+//
+//    @Override
+//    public char ordering() {
+//        return 'c';
+//    }
+//}

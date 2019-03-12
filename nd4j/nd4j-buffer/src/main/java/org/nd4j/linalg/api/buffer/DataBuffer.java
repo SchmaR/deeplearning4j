@@ -32,7 +32,7 @@ import java.util.Collection;
  *
  * @author Adam Gibson
  */
-public interface DataBuffer extends Serializable, AutoCloseable {
+public interface DataBuffer extends Serializable {
     enum TypeEx {
 
     }

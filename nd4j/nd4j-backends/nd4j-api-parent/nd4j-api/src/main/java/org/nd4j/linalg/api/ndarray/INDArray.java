@@ -35,7 +35,7 @@ import java.util.List;
  *
  * @author Adam Gibson
  */
-public interface INDArray extends Serializable, AutoCloseable {
+public interface INDArray extends Serializable {
     /**
      * Returns the shape information debugging
      * information

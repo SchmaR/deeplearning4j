@@ -10671,6 +10671,13 @@ public static final int TAD_THRESHOLD = TAD_THRESHOLD();
 // #define ILAMBDA_T(X, ...) [__VA_ARGS__] (Nd4jLong _idx, T X) -> T
 // #define ILAMBDA_TT(X, Y, ...) [__VA_ARGS__] (Nd4jLong _idx, T X, T Y) -> T
 
+// stuff for benchmarks
+// #define GENERATE_XYZ() [&] (ResultSet &x, ResultSet &y, ResultSet &z)
+// #define GENERATE_XZ() [&] (ResultSet &x, ResultSet &z)
+
+// #define PARAMETRIC_XYZ() [&] (Parameters &p, ResultSet &x, ResultSet &y, ResultSet &z)
+// #define PARAMETRIC_XZ() [&] (Parameters &p, ResultSet &x, ResultSet &z)
+
 // #endif
 
 

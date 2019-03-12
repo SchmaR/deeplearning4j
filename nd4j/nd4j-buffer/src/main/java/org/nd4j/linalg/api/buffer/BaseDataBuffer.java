@@ -175,7 +175,7 @@ public abstract class BaseDataBuffer implements DataBuffer {
         this.underlyingLength = underlyingBuffer.underlyingLength();
         this.wrappedDataBuffer = underlyingBuffer;
         ((BaseDataBuffer) underlyingBuffer).referenced.compareAndSet(false, true);
-        ((BaseDataBuffer) underlyingBuffer).references.add(this);
+        // ((BaseDataBuffer) underlyingBuffer).references.add(this);
 
         // Adding link to original databuffer
         if (underlyingBuffer.originalDataBuffer() == null) {
@@ -2255,7 +2255,7 @@ public abstract class BaseDataBuffer implements DataBuffer {
         return pointer().capacity();
     }
 
-    @Override
+    // @Override
     public boolean closeable() {
         if (released || isAttached() || isConstant())
             return false;
@@ -2273,7 +2273,7 @@ public abstract class BaseDataBuffer implements DataBuffer {
             r.markReleased();
     }
 
-    @Override
+    // @Override
     public void close()  {
         if (!closeable())
             throw new IllegalStateException("Can't release this data buffer");
